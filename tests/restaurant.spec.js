@@ -100,12 +100,13 @@ describe('10 - Implemente os casos de teste e a função `createMenu`', () => {
     // Agora faça o TESTE 7 deste arquivo.
     // --------------------------------------------------------------------------------------
     // TESTE 7: Verifique se a função `order` aceita que pedidos repetidos sejam acrescidos a consumption.
-    // ```
-    // objetoRetornado.order('coxinha');
-    // objetoRetornado.order('agua');
-    // objetoRetornado.order('coxinha');
+    objetoRetornado.consumption = [];
+    objetoRetornado.order('coxinha');
+    objetoRetornado.order('agua');
+    objetoRetornado.order('coxinha');
     // objetoRetornado.consumption // Retorno: ['coxinha', 'agua', 'coxinha']
-    // ```
+    expect(objetoRetornado.consumption.length).toBe(3);
+    expect(objetoRetornado.consumption).toEqual(['coxinha', 'agua', 'coxinha']);
     // Agora faça o TESTE 8 deste arquivo.
     // --------------------------------------------------------------------------------------
     // TESTE 8: Verifique se, ao chamar `objetoRetornado.pay()`, retorna-se a soma dos preços de tudo que foi pedido, conforme registrado em `objetoRetornado.consumption`
