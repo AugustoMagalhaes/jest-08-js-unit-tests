@@ -86,12 +86,19 @@ const orderFromMenu = (request, thisObject) => {
     this.consumption.push(request);
   }
 };
+
 const createMenu = (menu) => ({
   fetchMenu: () => menu, 
   consumption: [], 
-  order(request) {
-     this.consumption.push(request); 
-    }, // arrow function entende 'this' como objeto global: https://blog.da2k.com.br/2019/01/07/javascript-tudo-sobre-arrow-functions/
+  order(request) {    
+      this.consumption.push(request);      
+  }, // arrow function entende 'this' como objeto global: https://blog.da2k.com.br/2019/01/07/javascript-tudo-sobre-arrow-functions/
+  pay() {
+    const itemsMenu = this.fetchMenu();
+    const allFoods = { ...itemsMenu.food, ...itemsMenu.drink };
+    const sumBill = this.consumption.reduce((sum, item) => sum + allFoods[item], 0) * 1.1;
+    return sumBill;    
+  },
 });
 
 const objetoRetornado = createMenu({ food: {}, drink: {} });
