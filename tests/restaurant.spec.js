@@ -79,7 +79,8 @@ describe('10 - Implemente os casos de teste e a função `createMenu`', () => {
     // TESTE 5: Verifique se, ao chamar uma função associada à chave `order` no objeto retornado,
     // passando uma string como parâmetro (como `objetoRetornado.order('coxinha')`), tal string é adicionada
     // ao array retornado em `objetoRetornado.consumption`.
-    // ```
+    expect(objetoRetornado.order('coxinha')).toBeUndefined(); // este teste invoca o metodo 'order' e ja adiciona o conteudo a ser testado a seguir:       
+    expect(objetoRetornado).toHaveProperty('consumption', ['coxinha']);
     // const objetoRetornado = createMenu(objetoQualquer);
     // objetoRetornado.order("coxinha");
     // objetoRetornado.consumption // Retorno: ["coxinha"]

@@ -79,10 +79,23 @@
 // que percorre por todos os itens de `objetoRetornado.consumption`, soma o preço deles e retorna o valor somado acrescido de 10%.
 // DICA: para isso, você precisará percorrer tanto o objeto da chave `food` quanto o objeto da chave `drink`.
 
-const createMenu = (menu) => ({ fetchMenu: () => menu });
+const orderFromMenu = (request, thisObject) => {
+  if (thisObject) {
+    thisObject.consumption.push(request);
+  } else {
+    this.consumption.push(request);
+  }
+};
+const createMenu = (menu) => ({
+  fetchMenu: () => menu, 
+  consumption: [], 
+  order(request) {
+     this.consumption.push(request); 
+    }, // arrow function entende 'this' como objeto global: https://blog.da2k.com.br/2019/01/07/javascript-tudo-sobre-arrow-functions/
+});
 
 const objetoRetornado = createMenu({ food: {}, drink: {} });
-objetoRetornado.consumption = [];
-console.log(Object.keys(objetoRetornado));
+
+const meuRestaurante = createMenu({ food: { coxinha: 3.9, sopa: 9.9 }, drink: { agua: 3.9, cerveja: 6.9 } });
 
 module.exports = { createMenu, objetoRetornado };
