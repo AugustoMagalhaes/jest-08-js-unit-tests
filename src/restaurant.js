@@ -81,8 +81,8 @@
 
 const createMenu = (menu) => ({ fetchMenu: () => menu });
 
-console.log(createMenu({ food: {}, drink: {} }).fetchMenu());
-
 const objetoRetornado = createMenu({ food: {}, drink: {} });
-console.log(typeof objetoRetornado.fetchMenu());
-module.exports = createMenu;
+objetoRetornado.consumption = [];
+console.log(Object.keys(objetoRetornado));
+
+module.exports = { createMenu, objetoRetornado };

@@ -1,4 +1,5 @@
-const createMenu = require('../src/restaurant');
+const {createMenu, objetoRetornado} = require('../src/restaurant');
+//const objetoRetornado = require('../src/restaurant');
  
 /*
   Você é responsável por escrever o código do sistema de pedidos de um restaurante. Deve ser possível, através desse sistema, cadastrar um menu. Dado que um menu foi cadastrado, o sistema deve disponibilizar um objeto através do qual se consegue:
@@ -48,13 +49,15 @@ describe('10 - Implemente os casos de teste e a função `createMenu`', () => {
   it('Verifica se a função `createMenu` tem o comportamento esperado', () => {    
     // TESTE 1: Verifique se o retorno da função createMenu() é um objeto que possui a
     // chave fetchMenu, a qual tem como valor uma função.
-    expect(createMenu({ food: {}, drink: {} })).toMatchObject(({ fetchMenu: expect.any(Function) }));
-    const objetoRetornado = createMenu({ food: {}, drink: {} });
-    expect(objetoRetornado).toMatchObject(({ fetchMenu: expect.any(Function) }));
+    /* expect(createMenu({ food: {}, drink: {} })).toMatchObject(({ fetchMenu: expect.any(Function) })); */
+    
+    /* const objetoRetornado = createMenu({ food: {}, drink: {} }); */
+    expect(objetoRetornado).toHaveProperty('fetchMenu');
+    
     // ```
     // TESTE 2: Verifique se 'objetoRetornado.fetchMenu()' retorna um objeto cujas chaves são somente `food` e `drink`, 
     // considerando que a função createMenu() foi chamada com o objeto: `{ food: {}, drink: {} }`.
-    expect(objetoRetornado.fetchMenu()).toMatchObject({ food: {}, drink: {} });
+    expect(objetoRetornado.fetchMenu()).toEqual({ food: {}, drink: {} });
     // ```
     // const objetoRetornado = createMenu({ food: {}, drink: {} });
     // objetoRetornado.fetchMenu() // Retorno: { food: {}, drink: {}}
@@ -67,7 +70,7 @@ describe('10 - Implemente os casos de teste e a função `createMenu`', () => {
     // Agora faça o PASSO 1 no arquivo `src/restaurant.js`.
     // --------------------------------------------------------------------------------------
     // TESTE 4: Verifique se 'objetoRetornado.consumption', após a criação do menu, retorna um array vazio.
-    // ```
+    expect(objetoRetornado.consumption).toEqual([]);
     // const objetoRetornado = createMenu(objetoQualquer);
     // objetoRetornado.consumption // Retorno: []
     // ```
