@@ -1,0 +1,26 @@
+{
+  "name": "trybe-08-js-unit-tests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/AugustoMagalhaes/trybe-08-js-unit-tests.git"
+  },
+  "keywords": [
+    "jest",
+    "unit-tests"
+  ],
+  "author": "AugustoMagalhaes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AugustoMagalhaes/trybe-08-js-unit-tests/issues"
+  },
+  "homepage": "https://github.com/AugustoMagalhaes/trybe-08-js-unit-tests#readme",
+  "dependencies": {
+    "jest": "^28.1.0"
+  }
+}
